@@ -20,6 +20,18 @@ body{
     min-height: 100vh;
 }
 
+.mobile-title {
+    display: none;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #000;
+}
+
+.mobile-title.unfoll {
+    display: none;
+}
+
 .wrapper{
     position: relative;
     width: 750px;
@@ -172,11 +184,6 @@ form .linkTxt{
     transition-delay: calc(.1s * var(--i));
 }
 
-
-
-
-
-
 .wrapper .info-text{
     position: absolute;
     top: 0;
@@ -223,9 +230,6 @@ form .linkTxt{
 }
 
 
-
-
-
 .wrapper .rotate-bg{
     position: absolute;
     top: -4px;
@@ -243,16 +247,6 @@ form .linkTxt{
     transform: rotate(0) skewY(0);
     transition-delay: 0.5s;
 }
-
-
-
-
-
-
-
-
-
-
 
 .wrapper .form-box.register{
     padding: 0 40px 0 60px;
@@ -280,7 +274,6 @@ form .linkTxt{
 }
 
 
-
 .wrapper .info-text.register{
     left: 0;
     text-align: left;
@@ -291,7 +284,6 @@ form .linkTxt{
 .wrapper.active .info-text.register{
     pointer-events: auto;
 }
-
 
 .wrapper .info-text.register .animation{
     transform: translateX(-120%);
@@ -307,9 +299,6 @@ form .linkTxt{
     filter: blur(0);
     transition-delay: calc(.1s * var(--i));
 }
-
-
-
 
 .wrapper .rotate-bg2{
     position: absolute;
@@ -327,4 +316,159 @@ form .linkTxt{
 .wrapper.active .rotate-bg2{
     transform: rotate(-11deg) skewY(-40deg);
     transition-delay: 1.2s;
+}
+/* Add these media queries at the end of your existing CSS */
+
+@media screen and (max-width: 768px) {
+    .mobile-title {
+        display: block;
+    }
+
+    .wrapper.active .mobile-title {
+        display: none;
+    }
+
+    .wrapper.active .mobile-title.unfoll {
+        display: block;
+    }
+
+    .wrapper,
+    .wrapper.active {
+        width: 90%;
+        height: auto;
+        min-height: 500px;
+    }
+
+    .wrapper .form-box.login,
+    .wrapper.active .form-box.login {
+        padding: 0 20px;
+        width: 100%;
+        position: relative;
+        left: 0;
+        transition: all 0.7s ease;
+    }
+
+    .wrapper.active .form-box.login {
+        left: -100%;
+    }
+
+    .wrapper .form-box.register,
+    .wrapper.active .form-box.register {
+        padding: 0 20px;
+        width: 100%;
+        position: absolute;
+        right: -100%;
+        transition: all 0.7s ease;
+    }
+
+    .wrapper.active .form-box.register {
+        right: 0;
+    }
+
+    .wrapper .info-text.login,
+    .wrapper .info-text.register,
+    .wrapper.active .info-text.login,
+    .wrapper.active .info-text.register {
+        display: none;
+    }
+
+    .rotate-bg, 
+    .rotate-bg2,
+    .wrapper.active .rotate-bg,
+    .wrapper.active .rotate-bg2 {
+        display: none;
+    }
+
+    .wrapper .form-box {
+        position: relative;
+        width: 100%;
+    }
+
+    /* Fix animations in mobile view */
+    .wrapper .form-box.login .animation,
+    .wrapper .form-box.register .animation,
+    .wrapper.active .form-box.login .animation,
+    .wrapper.active .form-box.register .animation {
+        transform: translateX(0);
+        transition: 0.7s ease;
+    }
+
+    .wrapper.active .form-box.login .animation {
+        transform: translateX(-100%);
+    }
+
+    .wrapper.active .form-box.register .animation {
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .wrapper,
+    .wrapper.active {
+        border: none;
+        box-shadow: none;
+        margin: 10px;
+    }
+
+    .form-box h2 {
+        font-size: 24px;
+    }
+
+    .input-box {
+        margin: 15px 0;
+    }
+
+    .input-box input {
+        font-size: 14px;
+    }
+
+    .input-box label {
+        font-size: 14px;
+    }
+
+    form button {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .linkTxt {
+        font-size: 12px;
+    }
+
+    .modal-dialog {
+        margin: 10px;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    body {
+        min-height: auto;
+        padding: 20px 0;
+    }
+
+    .wrapper,
+    .wrapper.active {
+        height: auto;
+        min-height: 400px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .wrapper,
+    .wrapper.active {
+        width: 700px;
+    }
+
+    .wrapper .form-box.login,
+    .wrapper .form-box.register {
+        padding: 0 30px;
+    }
+
+    .wrapper .info-text.login {
+        padding: 0 30px 60px 100px;
+    }
+
+    .wrapper .info-text.register {
+        padding: 0 100px 60px 30px;
+    }
 }
